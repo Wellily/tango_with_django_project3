@@ -28,7 +28,7 @@ SECRET_KEY = 'x*0h0g$aa&ot*-vij=gfthg6h5==5$1z#i%#pvwo(ik3e7*-yx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://wellily.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
