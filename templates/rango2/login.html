@@ -1,0 +1,23 @@
+{% extends 'rango2/base.html' %}
+
+{% block title_block %}
+    Login
+{% endblock %}
+
+{% block body_block %}
+    <h1>Login for Rango2</h1>
+    <div>
+        <form id="login_form" method="post"action="{% url 'rango2:login' %}">
+            {% csrf_token %}
+            Username:<input type="text"name="username"value=""size="50">
+            <br/>
+            Password:<input type="password"name="password"value=""size="50">
+            <br/>
+            <input type="submit"value="submit">
+        </form>
+    </div>
+    <p>
+        Not a member?
+        <a href="{% url 'registration_register' %}">Rsgister</a>
+    </p>
+{% endblock %}

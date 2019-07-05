@@ -1,0 +1,23 @@
+{% extends 'rango2/base.html' %}
+
+{% block title_block %}
+    About
+{% endblock %}
+
+{% block body_block %}
+    <img src="{{ MEDIA_URL }}cat.jpg"><br/>
+    This tutorial has been put together by
+
+    <button class="btn btn-primary"
+    onclick="alert('You clicked the button using JavaScript.')">
+        Click Me - I ran JavaScript
+    </button>
+
+    <button class="btn btn-primary"id="about-btn">
+        Click Me - I'm JavaScript on Speed
+    </button>
+
+    <div id="msg">Hello - I'm here for a jQuery Example too</div>
+
+    <p>This text is for jQuery Example</p>
+{% endblock %}

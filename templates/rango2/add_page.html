@@ -1,0 +1,58 @@
+{% extends 'rango2/base.html' %}
+
+{% block title_block %}
+    Add Page
+{% endblock %}
+
+{% block body_block %}
+    {% if category %}
+    <form role="form"id="page_form"method="post"action="{% url 'rango2:add_page' category.slug %}">
+        <h2 class="form-signin-heading">
+            Add a Page to<a href="{% url 'rango2:show_category' category.slug %}">{{category.name}}</a>
+            {% csrf_token %}
+        </h2>
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}<br/>
+                {{ field }}<br/>
+                <br/>
+            {% endfor %}
+            <!--{{ form.as_p }}-->
+            <br/>
+            <button class="btn btn-primary"type="submit"name="submit">Add Page</button>
+    </form>
+    {% else %}
+        <p>This is category does not exist.</p>
+    {% endif %}
+
+<!--
+<h1>Add a Page</h1>
+    <div>
+        <form id="page_form2"method="post"action="{% url 'rango2:add_page' category.slug %}">
+            {% if category %}
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+                <br/>
+            {% endfor %}
+            {% else %}
+                <strong>A category by this name does not exist</strong>
+            {% endif %}
+            <input type="submit"name="submit"value="Create Page"/>
+        </form>
+    </div>
+-->
+
+{% endblock %}

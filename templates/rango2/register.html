@@ -1,0 +1,27 @@
+{% extends 'rango2/base.html' %}
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block body_block %}
+    <h1>Register for Rango2</h1>
+    <div>
+        {% if registered  %}<!--注册成功，就不需要展示form了，直接提供返回超链接-->
+            Rango2 says:<strong>thank you for registering!</strong>
+            <a href="{% url 'rango2:index' %}">Return to the homepage.</a>
+        {% else %}<!--准备注册，就需要展示form，让用户填写并能够提交-->
+            Rango2 says:<strong>register here!</strong>
+            <form id="user_form"method="post"action="{% url 'rango2:register' %}"
+            enctype="multipart/form-data"><!--这个最后的参数是什么意思?因为用户上传
+            图像可能数据很大，该参数传递给服务器时，分段打包发送，如果用户想通过表单
+            上传文件，必须设置该参数-->
+                {% csrf_token %}
+
+                {{ user_form.as_p }}<!--比add_page中分别指定field要简单多了-->
+                {{ profile_form.as_p }}
+
+            <input type="submit"name="submit"value="Register"/>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
