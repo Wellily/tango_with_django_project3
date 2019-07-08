@@ -28,7 +28,7 @@ class MyRegistrationView(RegistrationView):
 
 urlpatterns = [
     re_path('^$', views.index, name='index'),
-    re_path('^rango2/', include('rango2.urls')),
+    re_path('^wellspace/', include('rango2.urls')),
     path('admin/', admin.site.urls),
     re_path('^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
     re_path('^accounts/', include('registration.backends.simple.urls'))  # 引入registration的URL映射
